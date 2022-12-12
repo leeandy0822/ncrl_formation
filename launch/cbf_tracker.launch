@@ -1,3 +1,0 @@
-<launch>
-    <node name="velocity_cbf_node" pkg="mobile_robot" type="velocity_cbf_node"></node>
-</launch>
