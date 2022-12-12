@@ -129,25 +129,9 @@ int main(int argc, char** argv)
     desired_vel_raw.twist.linear.x = 0;
     desired_vel_raw.twist.linear.y = 0;
 
-    
     while(ros::ok())
     {
         cbf.QPsolve_vel(desired_vel_raw , &desired_vel);
-        /*
-        if((ros::Time::now() - cbf.getTagPose().header.stamp)<ros::Duration(0.5))
-        {
-            if(cbf.QPsolve_vel(desired_vel_raw , &desired_vel)!=0){
-                desired_vel = desired_vel_raw;
-            }
-            //  ROS_INFO("cbf input:vx: %f vy: %f \n",desired_vel.twist.linear.x,desired_vel.twist.linear.y); 
-
-        }
-        else{
-            desired_vel = desired_vel_raw;
-        }
-        
-        local_vel_pub.publish(desired_vel);
-        */
         ros::spinOnce();
         rate.sleep();
         
