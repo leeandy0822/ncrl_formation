@@ -15,18 +15,14 @@
 #define CONTROL_HZ 100.0f
 
 float trajectory_t; 
-/*
-float wayPoint_x_final = 0.0;
-float wayPoint_y_final = 0.0;
-float wayPoint_x_initial;
-float wayPoint_y_initial;
-*/
 
 geometry_msgs::PoseStamped leader_pose;
 geometry_msgs::Point wayPoint_final;
 geometry_msgs::Point wayPoint_initial;
 
-
+int track_count = 0;
+float sum_x = 0;
+float sum_y = 0;
 
 enum {
 	DISARM,
@@ -189,8 +185,15 @@ void waypoint_cb(const geometry_msgs::Point::ConstPtr& msg)
 		else
 		{
 			wayPoint_initial = leader_pose.pose.position;
-			wayPoint_final.x = msg->x;
-			wayPoint_final.y = msg->y;
+			sum_x += msg->x;
+			sum_y += msg->y;
+			track_count ++;
+			if(track_count == 100)
+			{
+				wayPoint_final.x = sum_x/100;
+				wayPoint_final.y = sum_y/100;
+				sum_x = sum_y = track_count = 0;
+			}
 		}
 	}
 	else
