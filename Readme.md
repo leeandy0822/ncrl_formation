@@ -5,6 +5,9 @@ This is a package to control UAV by communicating with flight controller by ROS.
 [MAVROS](http://wiki.ros.org/mavros) should be installed for PX4!
 
 ## Note
+## Tutorial(NCRL member)
+- https://hackmd.io/89-0aloqRkC11zAadSFK3w?view
+
 
 * motive - Control UAV under motion capture system
     * Input(from mocap): /vrpn_client_node/RigidBody*/pose
@@ -26,9 +29,6 @@ This is a package to control UAV by communicating with flight controller by ROS.
     * Output(to PX4): /mavros/setpoint_velocity/cmd_vel
     * Output(vir): /desired_position /desired_velocity
     * Features: Keyboard control, circular trajectory and Search-Based planning are included
-
-## Learning
-* 
 
 
 ## Authors
